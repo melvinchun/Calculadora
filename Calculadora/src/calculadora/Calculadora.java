@@ -16,6 +16,7 @@ public class Calculadora extends javax.swing.JFrame {
      */
     public Calculadora() {
         initComponents();
+         this.setLocationRelativeTo(null);
     }
 
     /**
@@ -29,6 +30,23 @@ public class Calculadora extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
+        B_2 = new javax.swing.JButton();
+        B_1 = new javax.swing.JButton();
+        B_7 = new javax.swing.JButton();
+        B_6 = new javax.swing.JButton();
+        B_8 = new javax.swing.JButton();
+        B_4 = new javax.swing.JButton();
+        B_5 = new javax.swing.JButton();
+        B_3 = new javax.swing.JButton();
+        B_lista = new javax.swing.JButton();
+        B_9 = new javax.swing.JButton();
+        B_cero = new javax.swing.JButton();
+        B_mas = new javax.swing.JButton();
+        B_por = new javax.swing.JButton();
+        B_menos = new javax.swing.JButton();
+        B_entre = new javax.swing.JButton();
+        B_enter = new javax.swing.JButton();
+        B_punto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,36 +55,236 @@ public class Calculadora extends javax.swing.JFrame {
         jTextField1.setBackground(new java.awt.Color(102, 102, 102));
         jTextField1.setFont(new java.awt.Font("Chalkduster", 1, 24)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("jTextField1");
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextField1.setFocusable(false);
+
+        B_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2.png"))); // NOI18N
+        B_2.setBorder(null);
+        B_2.setBorderPainted(false);
+        B_2.setContentAreaFilled(false);
+        B_2.setFocusable(false);
+        B_2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2-1.png"))); // NOI18N
+
+        B_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.png"))); // NOI18N
+        B_1.setBorder(null);
+        B_1.setBorderPainted(false);
+        B_1.setContentAreaFilled(false);
+        B_1.setFocusable(false);
+        B_1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1-1.png"))); // NOI18N
+
+        B_7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/7.png"))); // NOI18N
+        B_7.setBorder(null);
+        B_7.setBorderPainted(false);
+        B_7.setContentAreaFilled(false);
+        B_7.setFocusable(false);
+        B_7.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/7-1.png"))); // NOI18N
+
+        B_6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/6.png"))); // NOI18N
+        B_6.setBorder(null);
+        B_6.setBorderPainted(false);
+        B_6.setContentAreaFilled(false);
+        B_6.setFocusable(false);
+        B_6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/6-1.png"))); // NOI18N
+
+        B_8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/8.png"))); // NOI18N
+        B_8.setBorder(null);
+        B_8.setBorderPainted(false);
+        B_8.setContentAreaFilled(false);
+        B_8.setFocusable(false);
+        B_8.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/8-1.png"))); // NOI18N
+
+        B_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4.png"))); // NOI18N
+        B_4.setBorder(null);
+        B_4.setBorderPainted(false);
+        B_4.setContentAreaFilled(false);
+        B_4.setFocusable(false);
+        B_4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4-1.png"))); // NOI18N
+        B_4.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4-1.png"))); // NOI18N
+
+        B_5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5.png"))); // NOI18N
+        B_5.setBorder(null);
+        B_5.setBorderPainted(false);
+        B_5.setContentAreaFilled(false);
+        B_5.setFocusable(false);
+        B_5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/5-1.png"))); // NOI18N
+
+        B_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/3.png"))); // NOI18N
+        B_3.setBorder(null);
+        B_3.setBorderPainted(false);
+        B_3.setContentAreaFilled(false);
+        B_3.setFocusable(false);
+        B_3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/3-1.png"))); // NOI18N
+
+        B_lista.setBackground(new java.awt.Color(255, 255, 255));
+        B_lista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lista.png"))); // NOI18N
+        B_lista.setBorder(null);
+        B_lista.setBorderPainted(false);
+        B_lista.setContentAreaFilled(false);
+        B_lista.setFocusable(false);
+        B_lista.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lista-1.png"))); // NOI18N
+
+        B_9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/9.png"))); // NOI18N
+        B_9.setBorder(null);
+        B_9.setBorderPainted(false);
+        B_9.setContentAreaFilled(false);
+        B_9.setFocusable(false);
+        B_9.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/9-1.png"))); // NOI18N
+
+        B_cero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/0.png"))); // NOI18N
+        B_cero.setBorder(null);
+        B_cero.setBorderPainted(false);
+        B_cero.setContentAreaFilled(false);
+        B_cero.setFocusable(false);
+        B_cero.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/0-1.png"))); // NOI18N
+
+        B_mas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mas.png"))); // NOI18N
+        B_mas.setBorder(null);
+        B_mas.setBorderPainted(false);
+        B_mas.setContentAreaFilled(false);
+        B_mas.setFocusable(false);
+        B_mas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mas-1.png"))); // NOI18N
+        B_mas.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mas-1.png"))); // NOI18N
+
+        B_por.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/X.png"))); // NOI18N
+        B_por.setBorder(null);
+        B_por.setBorderPainted(false);
+        B_por.setContentAreaFilled(false);
+        B_por.setFocusable(false);
+        B_por.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/x-1.png"))); // NOI18N
+
+        B_menos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menos.png"))); // NOI18N
+        B_menos.setBorder(null);
+        B_menos.setBorderPainted(false);
+        B_menos.setContentAreaFilled(false);
+        B_menos.setFocusable(false);
+        B_menos.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menos-1.png"))); // NOI18N
+
+        B_entre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/division.png"))); // NOI18N
+        B_entre.setBorder(null);
+        B_entre.setBorderPainted(false);
+        B_entre.setContentAreaFilled(false);
+        B_entre.setFocusable(false);
+        B_entre.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/division-1.png"))); // NOI18N
+
+        B_enter.setBackground(new java.awt.Color(255, 255, 255));
+        B_enter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/enter.png"))); // NOI18N
+        B_enter.setBorder(null);
+        B_enter.setBorderPainted(false);
+        B_enter.setContentAreaFilled(false);
+        B_enter.setFocusable(false);
+        B_enter.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/enter-1.png"))); // NOI18N
+
+        B_punto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/point.png"))); // NOI18N
+        B_punto.setBorder(null);
+        B_punto.setBorderPainted(false);
+        B_punto.setContentAreaFilled(false);
+        B_punto.setFocusable(false);
+        B_punto.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/point-1.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(B_1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(B_2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(B_4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(B_5))
+                            .addComponent(B_cero, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(B_6)
+                            .addComponent(B_3)
+                            .addComponent(B_punto, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(B_7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(B_8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(B_9)))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(B_por)
+                    .addComponent(B_mas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B_menos)
+                    .addComponent(B_entre, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(B_lista, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(B_enter, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(366, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(B_7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(B_8, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(B_9, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(B_6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(B_5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(B_4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(B_mas, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(B_menos, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(B_por, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(B_1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(B_2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(B_3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(B_cero)
+                    .addComponent(B_punto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B_entre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(B_enter, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B_lista, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -108,6 +326,23 @@ public class Calculadora extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_1;
+    private javax.swing.JButton B_2;
+    private javax.swing.JButton B_3;
+    private javax.swing.JButton B_4;
+    private javax.swing.JButton B_5;
+    private javax.swing.JButton B_6;
+    private javax.swing.JButton B_7;
+    private javax.swing.JButton B_8;
+    private javax.swing.JButton B_9;
+    private javax.swing.JButton B_cero;
+    private javax.swing.JButton B_enter;
+    private javax.swing.JButton B_entre;
+    private javax.swing.JButton B_lista;
+    private javax.swing.JButton B_mas;
+    private javax.swing.JButton B_menos;
+    private javax.swing.JButton B_por;
+    private javax.swing.JButton B_punto;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
