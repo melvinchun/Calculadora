@@ -35,7 +35,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,23 +56,28 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="B_1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="B_2" min="-2" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="B_4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="B_5" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="B_cero" min="-2" pref="106" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="B_cero" alignment="1" min="-2" pref="50" max="-2" attributes="0"/>
+                                      <Component id="B_1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="B_2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="B_punto" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="B_6" min="-2" max="-2" attributes="0"/>
                               <Component id="B_3" min="-2" max="-2" attributes="0"/>
-                              <Component id="B_punto" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="B_cero1" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -95,7 +100,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jTextField1" alignment="1" min="-2" pref="265" max="-2" attributes="0"/>
+                      <Component id="texto" alignment="1" min="-2" pref="265" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="B_lista" min="-2" pref="119" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -110,7 +115,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" pref="68" max="-2" attributes="0"/>
+                  <Component id="texto" min="-2" pref="68" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
@@ -145,16 +150,24 @@
                           <Component id="B_3" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="B_cero" min="-2" max="-2" attributes="0"/>
-                      <Component id="B_punto" min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="B_entre" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="B_entre" min="-2" pref="44" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="B_punto" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="B_cero" min="-2" max="-2" attributes="0"/>
+                              <Component id="B_cero1" alignment="1" min="-2" pref="50" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="B_lista" min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="B_enter" min="-2" pref="44" max="-2" attributes="0"/>
-                      <Component id="B_lista" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -162,7 +175,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="texto">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
@@ -195,6 +208,9 @@
               <Image iconType="3" name="/Imagenes/2-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B_1">
           <Properties>
@@ -211,6 +227,9 @@
               <Image iconType="3" name="/Imagenes/1-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B_7">
           <Properties>
@@ -227,6 +246,9 @@
               <Image iconType="3" name="/Imagenes/7-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_7ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B_6">
           <Properties>
@@ -243,6 +265,9 @@
               <Image iconType="3" name="/Imagenes/6-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_6ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B_8">
           <Properties>
@@ -259,6 +284,9 @@
               <Image iconType="3" name="/Imagenes/8-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_8ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B_4">
           <Properties>
@@ -278,6 +306,9 @@
               <Image iconType="3" name="/Imagenes/4-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_4ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B_5">
           <Properties>
@@ -294,6 +325,9 @@
               <Image iconType="3" name="/Imagenes/5-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_5ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B_3">
           <Properties>
@@ -310,6 +344,9 @@
               <Image iconType="3" name="/Imagenes/3-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_3ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B_lista">
           <Properties>
@@ -345,6 +382,9 @@
               <Image iconType="3" name="/Imagenes/9-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_9ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B_cero">
           <Properties>
@@ -361,6 +401,9 @@
               <Image iconType="3" name="/Imagenes/0-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_ceroActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B_mas">
           <Properties>
@@ -380,6 +423,9 @@
               <Image iconType="3" name="/Imagenes/mas-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_masActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B_por">
           <Properties>
@@ -396,6 +442,9 @@
               <Image iconType="3" name="/Imagenes/x-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_porActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B_menos">
           <Properties>
@@ -412,6 +461,9 @@
               <Image iconType="3" name="/Imagenes/menos-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_menosActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B_entre">
           <Properties>
@@ -428,6 +480,9 @@
               <Image iconType="3" name="/Imagenes/division-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_entreActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B_enter">
           <Properties>
@@ -463,6 +518,28 @@
               <Image iconType="3" name="/Imagenes/point-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_puntoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="B_cero1">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Imagenes/back.png"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Imagenes/back-1.png"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_cero1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
