@@ -5,6 +5,8 @@
  */
 package calculadora;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Brenda
@@ -16,7 +18,7 @@ public class Calculadora extends javax.swing.JFrame {
      */
     public Calculadora() {
         initComponents();
-         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -58,7 +60,11 @@ public class Calculadora extends javax.swing.JFrame {
         texto.setForeground(new java.awt.Color(255, 255, 255));
         texto.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         texto.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        texto.setFocusable(false);
+        texto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textoKeyPressed(evt);
+            }
+        });
 
         B_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/2.png"))); // NOI18N
         B_2.setBorder(null);
@@ -387,72 +393,94 @@ public class Calculadora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void B_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_1ActionPerformed
-        texto.setText(texto.getText()+"1");
+        texto.setText(texto.getText() + "1");
     }//GEN-LAST:event_B_1ActionPerformed
 
     private void B_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_2ActionPerformed
-        texto.setText(texto.getText()+"2");
+        texto.setText(texto.getText() + "2");
     }//GEN-LAST:event_B_2ActionPerformed
 
     private void B_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_3ActionPerformed
-        texto.setText(texto.getText()+"3");
+        texto.setText(texto.getText() + "3");
     }//GEN-LAST:event_B_3ActionPerformed
 
     private void B_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_4ActionPerformed
-        texto.setText(texto.getText()+"4");
+        texto.setText(texto.getText() + "4");
     }//GEN-LAST:event_B_4ActionPerformed
 
     private void B_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_5ActionPerformed
-        texto.setText(texto.getText()+"5");
+        texto.setText(texto.getText() + "5");
     }//GEN-LAST:event_B_5ActionPerformed
 
     private void B_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_6ActionPerformed
-        texto.setText(texto.getText()+"6");
+        texto.setText(texto.getText() + "6");
     }//GEN-LAST:event_B_6ActionPerformed
 
     private void B_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_7ActionPerformed
-        texto.setText(texto.getText()+"7");
+        texto.setText(texto.getText() + "7");
     }//GEN-LAST:event_B_7ActionPerformed
 
     private void B_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_8ActionPerformed
-        texto.setText(texto.getText()+"8");
+        texto.setText(texto.getText() + "8");
     }//GEN-LAST:event_B_8ActionPerformed
 
     private void B_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_9ActionPerformed
-        texto.setText(texto.getText()+"9");
+        texto.setText(texto.getText() + "9");
     }//GEN-LAST:event_B_9ActionPerformed
 
     private void B_masActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_masActionPerformed
-        texto.setText(texto.getText()+"+");
+        texto.setText(texto.getText() + "+");
     }//GEN-LAST:event_B_masActionPerformed
 
     private void B_menosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_menosActionPerformed
-        texto.setText(texto.getText()+"-");
+        texto.setText(texto.getText() + "-");
     }//GEN-LAST:event_B_menosActionPerformed
 
     private void B_porActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_porActionPerformed
-        texto.setText(texto.getText()+"x");
+        texto.setText(texto.getText() + "x");
     }//GEN-LAST:event_B_porActionPerformed
 
     private void B_entreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_entreActionPerformed
-        texto.setText(texto.getText()+"/");
+        texto.setText(texto.getText() + "/");
     }//GEN-LAST:event_B_entreActionPerformed
 
     private void B_ceroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_ceroActionPerformed
-        texto.setText(texto.getText()+"0");
+        texto.setText(texto.getText() + "0");
     }//GEN-LAST:event_B_ceroActionPerformed
 
     private void B_puntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_puntoActionPerformed
-        texto.setText(texto.getText()+".");
+        texto.setText(texto.getText() + ".");
     }//GEN-LAST:event_B_puntoActionPerformed
 
     private void B_cero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_cero1ActionPerformed
-        if((texto.getText()).length()>0){
-          String temp= texto.getText();
-          temp=temp.substring(0, temp.length()-1);
-          texto.setText(temp);   
+        //Validcion del Boton Return
+        String temp = texto.getText();
+        int pos = texto.getCaretPosition() - 1;
+        if ((texto.getText()).length() > 0 && pos >= 0) {
+            String temp2 = "";
+            for (int i = 0; i < temp.length(); i++) {
+                if (i != pos) {
+                    temp2 += temp.charAt(i);
+                }
+            }
+            texto.setText(temp2);
+            texto.setCaretPosition(pos);
         }
     }//GEN-LAST:event_B_cero1ActionPerformed
+
+    private void textoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoKeyPressed
+        char temp=evt.getKeyChar();
+        if(!Character.isDigit(temp)){
+            String temp2="";
+            JOptionPane.showMessageDialog(this, "Formato invalido");
+            for (int i = 0; i < texto.getText().length(); i++) {
+                if(texto.getText().charAt(i)!=temp){
+                    temp2+=texto.getText().charAt(i);
+                }
+            }
+            texto.setText(temp2);
+        }
+    }//GEN-LAST:event_textoKeyPressed
 
     /**
      * @param args the command line arguments
