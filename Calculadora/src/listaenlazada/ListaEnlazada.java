@@ -48,4 +48,25 @@ public class ListaEnlazada {
             System.out.println(next.getValue() + ", ");
         }
     }
+    public void delete(int pos){
+        if(pos == 0){
+            cabeza.setNext(cabeza.next());
+        }else if(pos == 1){
+            //Nodo newNodo = new Nodo(value, cabeza.next());
+            //cabeza.setNext(newNodo);
+        }
+        Nodo next = cabeza;
+        int lugar = 0;
+        while(next.next() != null){
+            lugar++;
+            next = next.next();
+            if(lugar == pos-1){
+                //Nodo newNodo = new Nodo(value, next.next());
+                //next.setNext(newNodo);
+            }
+        }
+    }
+    public int getSize(){
+        return size;
+    }
 }
