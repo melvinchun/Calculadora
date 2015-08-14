@@ -49,7 +49,7 @@ public class Calculadora extends javax.swing.JFrame {
         B_entre = new javax.swing.JButton();
         B_enter = new javax.swing.JButton();
         B_punto = new javax.swing.JButton();
-        B_cero1 = new javax.swing.JButton();
+        B_return = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -264,15 +264,15 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
-        B_cero1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/back.png"))); // NOI18N
-        B_cero1.setBorder(null);
-        B_cero1.setBorderPainted(false);
-        B_cero1.setContentAreaFilled(false);
-        B_cero1.setFocusable(false);
-        B_cero1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/back-1.png"))); // NOI18N
-        B_cero1.addActionListener(new java.awt.event.ActionListener() {
+        B_return.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/back.png"))); // NOI18N
+        B_return.setBorder(null);
+        B_return.setBorderPainted(false);
+        B_return.setContentAreaFilled(false);
+        B_return.setFocusable(false);
+        B_return.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/back-1.png"))); // NOI18N
+        B_return.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_cero1ActionPerformed(evt);
+                B_returnActionPerformed(evt);
             }
         });
 
@@ -301,7 +301,7 @@ public class Calculadora extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(B_6)
                             .addComponent(B_3)
-                            .addComponent(B_cero1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(B_return, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(B_7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -364,7 +364,7 @@ public class Calculadora extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(B_punto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(B_cero)
-                            .addComponent(B_cero1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(B_return, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(B_lista, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -452,7 +452,7 @@ public class Calculadora extends javax.swing.JFrame {
         texto.setText(texto.getText() + ".");
     }//GEN-LAST:event_B_puntoActionPerformed
 
-    private void B_cero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_cero1ActionPerformed
+    private void B_returnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_returnActionPerformed
         //Validcion del Boton Return
         String temp = texto.getText();
         int pos = texto.getCaretPosition() - 1;
@@ -466,11 +466,11 @@ public class Calculadora extends javax.swing.JFrame {
             texto.setText(temp2);
             texto.setCaretPosition(pos);
         }
-    }//GEN-LAST:event_B_cero1ActionPerformed
+    }//GEN-LAST:event_B_returnActionPerformed
 
     private void textoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoKeyPressed
         char temp=evt.getKeyChar();
-        if(!Character.isDigit(temp) && (temp != '*' && temp != '+' && temp != '-' && temp != '/' && temp != 65535 && temp != 8 )){
+        if(!Character.isDigit(temp) && (temp != '*' && temp != '+' && temp != '-' && temp != '/'&& temp != 'x' && temp != 65535 && temp != 8 )){
             String temp2="";
             JOptionPane.showMessageDialog(this, "Formato invalido");
             for (int i = 0; i < texto.getText().length(); i++) {
@@ -528,7 +528,6 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton B_8;
     private javax.swing.JButton B_9;
     private javax.swing.JButton B_cero;
-    private javax.swing.JButton B_cero1;
     private javax.swing.JButton B_enter;
     private javax.swing.JButton B_entre;
     private javax.swing.JButton B_lista;
@@ -536,6 +535,7 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton B_menos;
     private javax.swing.JButton B_por;
     private javax.swing.JButton B_punto;
+    private javax.swing.JButton B_return;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField texto;
     // End of variables declaration//GEN-END:variables

@@ -77,7 +77,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="B_6" min="-2" max="-2" attributes="0"/>
                               <Component id="B_3" min="-2" max="-2" attributes="0"/>
-                              <Component id="B_cero1" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="B_return" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -160,7 +160,7 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="B_punto" min="-2" pref="50" max="-2" attributes="0"/>
                               <Component id="B_cero" min="-2" max="-2" attributes="0"/>
-                              <Component id="B_cero1" alignment="1" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="B_return" alignment="1" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -524,7 +524,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_puntoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="B_cero1">
+        <Component class="javax.swing.JButton" name="B_return">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/back.png"/>
@@ -540,7 +540,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_cero1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_returnActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
