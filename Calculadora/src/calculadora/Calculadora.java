@@ -6,6 +6,7 @@
 package calculadora;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +20,14 @@ public class Calculadora extends javax.swing.JFrame {
     public Calculadora() {
         initComponents();
         this.setLocationRelativeTo(null);
+        model = new DefaultTableModel();
+        model.addColumn("Expresion");
+        model.addColumn("Resultado");
+        String array[] = new String[2];
+        array[0] = "Hola";
+        array[1] = "5";
+        model.addRow(array);
+        tabla.setModel(model);
     }
 
     /**
@@ -30,6 +39,15 @@ public class Calculadora extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ventana_lista = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        click_menu = new javax.swing.JPopupMenu();
+        B_agregar = new javax.swing.JMenuItem();
+        B_eliminar = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         texto = new javax.swing.JTextField();
         B_2 = new javax.swing.JButton();
@@ -50,6 +68,77 @@ public class Calculadora extends javax.swing.JFrame {
         B_enter = new javax.swing.JButton();
         B_punto = new javax.swing.JButton();
         B_return = new javax.swing.JButton();
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        tabla.setModel(new DefaultTableModel());
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabla);
+
+        jButton1.setText("jButton1");
+
+        jLabel1.setFont(new java.awt.Font("Chalkduster", 1, 24)); // NOI18N
+        jLabel1.setText("Lista de Expresiones");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout ventana_listaLayout = new javax.swing.GroupLayout(ventana_lista.getContentPane());
+        ventana_lista.getContentPane().setLayout(ventana_listaLayout);
+        ventana_listaLayout.setHorizontalGroup(
+            ventana_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ventana_listaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        ventana_listaLayout.setVerticalGroup(
+            ventana_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ventana_listaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        B_agregar.setText("Agregar");
+        B_agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_agregarActionPerformed(evt);
+            }
+        });
+        click_menu.add(B_agregar);
+
+        B_eliminar.setText("Eliminar");
+        click_menu.add(B_eliminar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -170,6 +259,11 @@ public class Calculadora extends javax.swing.JFrame {
         B_lista.setContentAreaFilled(false);
         B_lista.setFocusable(false);
         B_lista.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lista-1.png"))); // NOI18N
+        B_lista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B_listaActionPerformed(evt);
+            }
+        });
 
         B_9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/9.png"))); // NOI18N
         B_9.setBorder(null);
@@ -469,18 +563,39 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_B_returnActionPerformed
 
     private void textoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoKeyPressed
-        char temp=evt.getKeyChar();
-        if(!Character.isDigit(temp) && (temp != '*' && temp != '+' && temp != '-' && temp != '/'&& temp != 'x' && temp != 65535 && temp != 8 )){
-            String temp2="";
+        char temp = evt.getKeyChar();
+        if (!Character.isDigit(temp) && (temp != '*' && temp != '+' && temp != '-' && temp != '/' && temp != 'x' && temp != 65535 && temp != 8 && temp != 10)) {
+            String temp2 = "";
             JOptionPane.showMessageDialog(this, "Formato invalido");
             for (int i = 0; i < texto.getText().length(); i++) {
-                if(texto.getText().charAt(i)!=temp){
-                    temp2+=texto.getText().charAt(i);
+                if (texto.getText().charAt(i) != temp) {
+                    temp2 += texto.getText().charAt(i);
                 }
             }
             texto.setText(temp2);
         }
     }//GEN-LAST:event_textoKeyPressed
+
+    private void B_listaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_listaActionPerformed
+    ventana_lista.pack();
+    ventana_lista.setModal(true);
+    ventana_lista.setLocationRelativeTo(this);
+    ventana_lista.setVisible(true);
+    }//GEN-LAST:event_B_listaActionPerformed
+
+    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
+    try {
+        if (evt.isMetaDown()) {
+                click_menu.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaMouseClicked
+
+    private void B_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_agregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B_agregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -527,7 +642,9 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton B_7;
     private javax.swing.JButton B_8;
     private javax.swing.JButton B_9;
+    private javax.swing.JMenuItem B_agregar;
     private javax.swing.JButton B_cero;
+    private javax.swing.JMenuItem B_eliminar;
     private javax.swing.JButton B_enter;
     private javax.swing.JButton B_entre;
     private javax.swing.JButton B_lista;
@@ -536,7 +653,15 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton B_por;
     private javax.swing.JButton B_punto;
     private javax.swing.JButton B_return;
+    private javax.swing.JPopupMenu click_menu;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabla;
     private javax.swing.JTextField texto;
+    private javax.swing.JDialog ventana_lista;
     // End of variables declaration//GEN-END:variables
+    private DefaultTableModel model;
 }
