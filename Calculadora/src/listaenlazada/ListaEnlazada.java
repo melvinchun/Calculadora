@@ -50,23 +50,32 @@ public class ListaEnlazada {
     }
     public void delete(int pos){
         if(pos == 0){
-            cabeza.setNext(cabeza.next());
+            cabeza = cabeza.next();
         }else if(pos == 1){
             //Nodo newNodo = new Nodo(value, cabeza.next());
-            //cabeza.setNext(newNodo);
+            cabeza.setNext(cabeza.next().next());
         }
-        Nodo next = cabeza;
+        Nodo siguiente = cabeza;
         int lugar = 0;
-        while(next.next() != null){
+        while(siguiente.next() != null){
             lugar++;
-            next = next.next();
+            siguiente = siguiente.next();
             if(lugar == pos-1){
-                //Nodo newNodo = new Nodo(value, next.next());
-                //next.setNext(newNodo);
+                siguiente.setNext(siguiente.next().next());
             }
         }
     }
     public int getSize(){
         return size;
+    }
+    @Override
+    public String toString(){
+        String retVal = cabeza.getValue() + ", ";
+        Nodo next = cabeza;
+        while(next.next() != null){
+            next = next.next();
+            retVal += (next.getValue() + ", ");
+        }
+        return retVal;
     }
 }

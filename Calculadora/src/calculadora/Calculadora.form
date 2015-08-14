@@ -128,7 +128,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                   <Component id="B_6" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
                                   <Component id="B_5" alignment="1" min="-2" pref="44" max="-2" attributes="0"/>
                               </Group>

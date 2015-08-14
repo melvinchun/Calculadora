@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author guitartsword
  */
-public class main {
+public class debug {
     public static void main(String[] args) {
         ListaEnlazada lista = new ListaEnlazada();
         char opc = '1';
@@ -41,12 +41,13 @@ public class main {
                     elem = sc.nextInt();
                     lista.insert(elem, pos);
                     break;
-                /*case'2':
+                case'2':
                     System.out.println("Posicion: ");
                     sc = new Scanner(System.in);
                     pos = sc.nextInt();
                     lista.delete(pos);
                     break;
+                /*
                 case'3':
                     System.out.println("Posicion: ");
                     sc = new Scanner(System.in);
