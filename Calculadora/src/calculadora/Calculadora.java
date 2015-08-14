@@ -470,7 +470,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void textoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoKeyPressed
         char temp=evt.getKeyChar();
-        if(!Character.isDigit(temp) && (temp != '*' && temp != '+' && temp != '-' && temp != '/')){
+        if(!Character.isDigit(temp) && (temp != '*' && temp != '+' && temp != '-' && temp != '/' && temp != 65535 && temp != 8 )){
             String temp2="";
             JOptionPane.showMessageDialog(this, "Formato invalido");
             for (int i = 0; i < texto.getText().length(); i++) {
