@@ -17,10 +17,6 @@ public class Pila {
         this.head = head;
     }
 
-    public Nodo getHead() {
-        return head;
-    }
-
     public void push(String value) {
         if (head == null) {
             head = new Nodo(value);
