@@ -4,54 +4,39 @@
  * and open the template in the editor.
  */
 package Pila;
+
 /**
  *
  * @author guitartsword
  */
 class Nodo {
-    private int value;
+
+    private String value;
     private Nodo next;
-    private Nodo previous;
 
-    public Nodo(Nodo nodo){
-       value = nodo.value;
-       next = nodo.next;
+    public Nodo() {
+        this.value = null;
+        this.next = null;
     }
-    public Nodo(int value, Nodo next, Nodo previous) {
-        this.value = value;
-        this.next = next;
-        this.previous = previous;
-    }
-    public Nodo(int value, Nodo next) {
-        this.value = value;
-        this.next = next;
-    }
-    public Nodo(int value) {
-        this.value = value;
-        next = null;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
+    
+    public Nodo(String value) {
         this.value = value;
     }
-
-    public Nodo next() {
-        return next;
-    }
-
-    public void setNext(Nodo next) {
+    
+    public Nodo(String value, Nodo next) {
+        this.value = value;
         this.next = next;
     }
     
-    public Nodo previous() {
-        return previous;
+    public Nodo getNext(){
+        return next;
     }
-
-    public void setPrevious(Nodo next) {
-        this.previous = next;
+    
+    public void setNext(Nodo nuevo){
+        next=nuevo;
+    }
+    
+    public String getValue(){
+        return value;
     }
 }

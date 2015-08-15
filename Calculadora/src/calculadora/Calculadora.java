@@ -37,8 +37,10 @@ public class Calculadora extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         click_menu = new javax.swing.JPopupMenu();
-        B_agregar = new javax.swing.JMenuItem();
+        B_modificar = new javax.swing.JMenuItem();
         B_eliminar = new javax.swing.JMenuItem();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         texto = new javax.swing.JTextField();
         B_2 = new javax.swing.JButton();
@@ -63,6 +65,9 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         tabla.setModel(new DefaultTableModel());
+        tabla.setFocusable(false);
+        tabla.setSelectionBackground(new java.awt.Color(153, 153, 255));
+        tabla.setVerifyInputWhenFocusTarget(false);
         tabla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaMouseClicked(evt);
@@ -70,7 +75,16 @@ public class Calculadora extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabla);
 
-        jButton1.setText("jButton1");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EXIT-1.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusable(false);
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EXIT.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Chalkduster", 1, 24)); // NOI18N
         jLabel1.setText("Lista de Expresiones");
@@ -81,26 +95,27 @@ public class Calculadora extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout ventana_listaLayout = new javax.swing.GroupLayout(ventana_lista.getContentPane());
@@ -120,16 +135,33 @@ public class Calculadora extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        B_agregar.setText("Agregar");
-        B_agregar.addActionListener(new java.awt.event.ActionListener() {
+        click_menu.setSelected(null);
+
+        B_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
+        B_modificar.setText("Modificar");
+        B_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_agregarActionPerformed(evt);
+                B_modificarActionPerformed(evt);
             }
         });
-        click_menu.add(B_agregar);
+        click_menu.add(B_modificar);
 
+        B_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Trash.png"))); // NOI18N
         B_eliminar.setText("Eliminar");
         click_menu.add(B_eliminar);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -527,7 +559,7 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_B_menosActionPerformed
 
     private void B_porActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_porActionPerformed
-        texto.setText(texto.getText() + "x");
+        texto.setText(texto.getText() + "*");
     }//GEN-LAST:event_B_porActionPerformed
 
     private void B_entreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_entreActionPerformed
@@ -560,7 +592,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void textoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoKeyPressed
         char temp = evt.getKeyChar();
-        if (!Character.isDigit(temp) && (temp != '*' && temp != '+' && temp != '-' && temp != '/' && temp != 'x' && temp != 65535 && temp != 8 && temp != 10)) {
+        if (!Character.isDigit(temp) && (temp != '*' && temp != '+' && temp != '-' && temp != '/'  && temp != 65535 && temp != 8 && temp != 10)) {
             String temp2 = "";
             JOptionPane.showMessageDialog(this, "Formato invalido");
             for (int i = 0; i < texto.getText().length(); i++) {
@@ -570,8 +602,6 @@ public class Calculadora extends javax.swing.JFrame {
             }
             texto.setText(temp2);
         }
-        //Metodo validar
-        validar(texto.getText());
     }//GEN-LAST:event_textoKeyPressed
 
     private void B_listaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_listaActionPerformed
@@ -591,13 +621,20 @@ public class Calculadora extends javax.swing.JFrame {
         }        // TODO add your handling code here:
     }//GEN-LAST:event_tablaMouseClicked
 
-    private void B_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_agregarActionPerformed
+    private void B_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_modificarActionPerformed
 
-    }//GEN-LAST:event_B_agregarActionPerformed
+    }//GEN-LAST:event_B_modificarActionPerformed
 
     private void B_enterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_enterActionPerformed
         //Boton de enter
+        
+        //Metodo validar
+        validar(texto.getText());
     }//GEN-LAST:event_B_enterActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ventana_lista.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -645,22 +682,27 @@ public class Calculadora extends javax.swing.JFrame {
         for (int i = 0; i < temp.length(); i++) {
             if (i == temp.length()-1 && (temp.charAt(i) == '+' || temp.charAt(i) == '-' || temp.charAt(i) == '*' || temp.charAt(i) == '/')){
                 JOptionPane.showMessageDialog(null, "Tiene un error de syntaxis, revise el ultimo signo", "Calculadora Simple", 2);
+                break;
             }else{
                 if (temp.charAt(i) == '+' && (temp.charAt(i+1) == '*' || temp.charAt(i+1) == '/')){
                     continuar = false;
                     JOptionPane.showMessageDialog(null, "Tiene un error de syntaxis, revise despues de un signo +", "Calculadora Simple", 2);
+                    break;
                 }
                 if (temp.charAt(i) == '-' && (temp.charAt(i+1) == '*' || temp.charAt(i+1) == '/')){
                     continuar = false;
                     JOptionPane.showMessageDialog(null, "Tiene un error de syntaxis, revise despues de un signo -", "Calculadora Simple", 2);
+                    break;
                 }
                 if (temp.charAt(i) == '*' && (temp.charAt(i+1) == '*' || temp.charAt(i+1) == '/')){
                     continuar = false;
                     JOptionPane.showMessageDialog(null, "Tiene un error de syntaxis, revise despues de un signo *", "Calculadora Simple", 2);
+                    break;
                 }
                 if (temp.charAt(i) == '/' && (temp.charAt(i+1) == '*' || temp.charAt(i+1) == '/')){
                     continuar = false;
                     JOptionPane.showMessageDialog(null, "Tiene un error de syntaxis, revise despues de un signo /", "Calculadora Simple", 2);
+                    break;
                 }
             }
         }
@@ -676,7 +718,6 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton B_7;
     private javax.swing.JButton B_8;
     private javax.swing.JButton B_9;
-    private javax.swing.JMenuItem B_agregar;
     private javax.swing.JButton B_cero;
     private javax.swing.JMenuItem B_eliminar;
     private javax.swing.JButton B_enter;
@@ -684,6 +725,7 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton B_lista;
     private javax.swing.JButton B_mas;
     private javax.swing.JButton B_menos;
+    private javax.swing.JMenuItem B_modificar;
     private javax.swing.JButton B_por;
     private javax.swing.JButton B_punto;
     private javax.swing.JButton B_return;
@@ -693,6 +735,8 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable tabla;
     private javax.swing.JTextField texto;
     private javax.swing.JDialog ventana_lista;
