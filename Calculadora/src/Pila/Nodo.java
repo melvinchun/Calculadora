@@ -5,10 +5,7 @@
  */
 package Pila;
 
-/**
- *
- * @author guitartsword
- */
+
 class Nodo {
 
     private String value;

@@ -5,10 +5,6 @@
  */
 package Pila;
 
-/**
- *
- * @author guitartsword
- */
 public class Pila {
 
     private Nodo head;
