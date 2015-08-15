@@ -10,35 +10,34 @@ package Cola;
  * @author guitartsword
  */
 class Nodo {
-    private int value;
-    private Nodo next;
+    private String value;
+    private Nodo previous;
 
     public Nodo(Nodo nodo){
-       value = nodo.value;
-       next = nodo.next;
+       previous = nodo.previous;
     }
-    public Nodo(int value, Nodo next) {
+    public Nodo(String value, Nodo next) {
         this.value = value;
-        this.next = next;
+        this.previous = next;
     }
-    public Nodo(int value) {
+    public Nodo(String value) {
         this.value = value;
-        next = null;
+        previous = null;
     }
 
-    public int getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
-    public Nodo next() {
-        return next;
+    public Nodo getPrevious() {
+        return previous;
     }
 
-    public void setNext(Nodo next) {
-        this.next = next;
+    public void setPrevious(Nodo next) {
+        this.previous = next;
     }
 }

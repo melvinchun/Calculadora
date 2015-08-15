@@ -10,33 +10,50 @@ package Cola;
  * @author guitartsword
  */
 public class Cola {
-    private int size;
+
     private Nodo cola;
-    
-    public void queue(int value){
+
+    public void queue(String value) {
         if (cola == null) {
             cola = new Nodo(value);
-        }else{
-            Nodo newCola = new Nodo(value);
-            newCola.setNext(cola);
-            cola = newCola;
+        } else {
+            Nodo temp = cola;
+            Nodo temp2 = cola.getPrevious();
+            do {
+                if (temp2 == null) {
+                    temp.setPrevious(new Nodo(value));
+                    break;
+                } else {
+                    temp = temp2;
+                    temp2 = temp.getPrevious();
+                }
+            } while (temp != null);
         }
     }
-    public int unqueue(){
-        int retValue = cola.getValue();
-        cola = cola.next();
-        return retValue;
+
+    public String unqueue() {
+        String retorno = "No hay valores";
+        if (cola == null) {
+            //Alguna validacion
+        } else {
+            retorno = cola.getValue();
+            Nodo temp = cola.getPrevious();
+            cola = temp;
+        }
+        return retorno;
     }
-    public int peek(){
+
+    public String peek() {
         return cola.getValue();
     }
-    public void print(){
-        System.out.println(cola.getValue() +", ");
-        Nodo next = cola;
-        while(next.next() != null){
-            next = next.next();
-            System.out.println(next.getValue() + ", ");
-        }
+
+    public void print() {
+        Nodo previous = cola;
+        String retorno = "";
+        do {
+            retorno = previous.getValue() + " " + retorno;
+            previous = previous.getPrevious();
+        } while (previous != null);
+        System.out.println(retorno);
     }
-    
 }

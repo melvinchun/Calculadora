@@ -12,13 +12,16 @@ package Cola;
 public class debug {
     public static void main(String[] args) {
         Cola cola = new Cola();
-        cola.queue(5);
-        cola.queue(8);
-        cola.queue(9);
-        cola.queue(-3);
-        cola.queue(932);
+        cola.queue("1");
+        cola.queue("2");
+        cola.queue("3");
+        cola.queue("4");
+        cola.queue("5");
+        cola.queue("6");
+        cola.print();
         cola.unqueue();
-        cola.peek();
         cola.unqueue();
+        System.out.println(cola.peek());
+        cola.print();
     }
 }

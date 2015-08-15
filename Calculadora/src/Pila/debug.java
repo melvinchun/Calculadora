@@ -9,7 +9,7 @@ package Pila;
  *
  * @author Brenda
  */
-public class Main {
+public class debug {
     public static void main(String[] args) {
         Pila pila= new Pila(new Nodo("8"));
         System.out.println(pila.pop());
