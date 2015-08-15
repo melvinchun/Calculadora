@@ -560,28 +560,28 @@ public class Calculadora extends javax.swing.JFrame {
             texto.setText(temp2);
             texto.setCaretPosition(pos);
         }
-        boolean continuar;
-        if (problema.isEmpty()){
+        boolean continuar = true;
+        if (temp.isEmpty()){
             JOptionPane.showMessageDialog(null, "¡No ha escrito nada!", "Calculadora Simple", 2);
             continuar = false;
         }
-        for (int i = 0; i < texto.getText().length(); i++) {
-            if (i == texto.length()-1 && (texto.charAt(i) == '+' || texto.charAt(i) == '-' || texto.charAt(i) == '*' || texto.charAt(i) == '/')){
+        for (int i = 0; i < temp.length(); i++) {
+            if (i == temp.length()-1 && (temp.charAt(i) == '+' || temp.charAt(i) == '-' || temp.charAt(i) == '*' || temp.charAt(i) == '/')){
                 JOptionPane.showMessageDialog(null, "Tiene un error de syntaxis, revise el ultimo signo", "Calculadora Simple", 2);
             }else{
-                if (texto.charAt(i) == '+' && (texto.charAt(i+1) == '*' || texto.charAt(i+1) == '/')){
+                if (temp.charAt(i) == '+' && (temp.charAt(i+1) == '*' || temp.charAt(i+1) == '/')){
                     continuar = false;
                     JOptionPane.showMessageDialog(null, "Tiene un error de syntaxis, revise despues de un signo +", "Calculadora Simple", 2);
                 }
-                if (texto.charAt(i) == '-' && (texto.charAt(i+1) == '*' || texto.charAt(i+1) == '/')){
+                if (temp.charAt(i) == '-' && (temp.charAt(i+1) == '*' || temp.charAt(i+1) == '/')){
                     continuar = false;
                     JOptionPane.showMessageDialog(null, "Tiene un error de syntaxis, revise despues de un signo -", "Calculadora Simple", 2);
                 }
-                if (texto.charAt(i) == '*' && (texto.charAt(i+1) == '*' || texto.charAt(i+1) == '/')){
+                if (temp.charAt(i) == '*' && (temp.charAt(i+1) == '*' || temp.charAt(i+1) == '/')){
                     continuar = false;
                     JOptionPane.showMessageDialog(null, "Tiene un error de syntaxis, revise despues de un signo *", "Calculadora Simple", 2);
                 }
-                if (texto.charAt(i) == '/' && (texto.charAt(i+1) == '*' || texto.charAt(i+1) == '/')){
+                if (temp.charAt(i) == '/' && (temp.charAt(i+1) == '*' || temp.charAt(i+1) == '/')){
                     continuar = false;
                     JOptionPane.showMessageDialog(null, "Tiene un error de syntaxis, revise despues de un signo /", "Calculadora Simple", 2);
                 }
