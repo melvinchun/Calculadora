@@ -638,6 +638,9 @@
               <Image iconType="3" name="/Imagenes/enter-1.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="B_enterActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="B_punto">
           <Properties>
