@@ -5,6 +5,8 @@
  */
 package listaenlazada;
 
+import Expresion.Expresion;
+
 /**
  *
  * @author guitartsword
@@ -15,7 +17,7 @@ public class ListaEnlazada {
     public ListaEnlazada() {
         cabeza = null;
     }
-    public void insert(int value, int pos){
+    public void insert(Expresion value, int pos){
         if(pos == 0 && cabeza == null){
             cabeza = new Nodo(value);
         }else if(pos == 0){

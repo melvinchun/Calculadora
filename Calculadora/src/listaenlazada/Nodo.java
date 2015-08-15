@@ -5,33 +5,35 @@
  */
 package listaenlazada;
 
+import Expresion.Expresion;
+
 /**
  *
  * @author guitartsword
  */
 public class Nodo {
-    private int value;
+    private Expresion value;
     private Nodo next;
 
     public Nodo(Nodo nodo){
        value = nodo.value;
        next = nodo.next;
     }
-    public Nodo(int value, Nodo next) {
+    public Nodo(Expresion value, Nodo next) {
         this.value = value;
         this.next = next;
     }
 
-    public Nodo(int value) {
+    public Nodo(Expresion value) {
         this.value = value;
         next = null;
     }
 
-    public int getValue() {
+    public Expresion getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(Expresion value) {
         this.value = value;
     }
 

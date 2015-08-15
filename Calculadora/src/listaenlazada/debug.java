@@ -39,7 +39,7 @@ public class debug {
                     System.out.println("Palabra: ");
                     sc = new Scanner(System.in);
                     elem = sc.nextInt();
-                    lista.insert(elem, pos);
+                    //lista.insert(elem, pos);
                     break;
                 case'2':
                     System.out.println("Posicion: ");
