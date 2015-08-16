@@ -88,15 +88,15 @@ public class ListaEnlazada {
     }
 
     public int getSize() {
-        int cont = 0;
+        if (cabeza == null) {
+            return 0;
+        }
+        int cont = 1;
         Nodo temp = cabeza;
-        do {
+        while(temp.next() != null) {
             cont++;
-            if (cabeza == null) {
-                cont = 0;
-            }
             temp = temp.next();
-        } while (temp != null);
+        }
         return cont;
     }
 }
