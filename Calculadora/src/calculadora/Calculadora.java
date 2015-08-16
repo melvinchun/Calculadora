@@ -168,6 +168,11 @@ public class Calculadora extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         texto_modificar.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        texto_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                texto_modificarActionPerformed(evt);
+            }
+        });
         texto_modificar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 texto_modificarKeyPressed(evt);
@@ -886,14 +891,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void B_puntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_puntoActionPerformed
         //Creo que sera eliminado
-        String expresion = "3+2*5-4/2+3";
-        System.out.println("Probando postfija");
-        System.out.println("Probando con expresion: " + expresion);
-        System.out.print("Expresion postfija es: ");
-        String[] postfija = toPostfija(expresion);
-        for(int i = 0; i < postfija.length; i++){
-            System.out.print(postfija[i] + " ");
-        }
+        JOptionPane.showMessageDialog(this, "Decimales no estan disponibles en version TRIAL.", "Comprelo PAPA!!", 1);
     }//GEN-LAST:event_B_puntoActionPerformed
 
     private void B_returnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_returnActionPerformed
@@ -963,11 +961,10 @@ public class Calculadora extends javax.swing.JFrame {
             Expresion temp = new Expresion(texto.getText());
             //Aqui la convertis a postfija con un metodo y usas el metodo temp.setPostfija
             temp.setPostfija(toPostfija(temp.getStandard()));
-            temp.setResultado(resultado(temp.getRawPostfija()));
-            //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
             
+            //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
+            temp.setResultado(resultado(temp.getRawPostfija()));
             lista.insert(temp, 0);
-            lista.print();
             texto.setText("");
         }
     }//GEN-LAST:event_B_enterActionPerformed
@@ -998,6 +995,7 @@ public class Calculadora extends javax.swing.JFrame {
             Expresion temp=new Expresion(texto_modificar.getText());
             lista.delete(posicion);
             temp.setPostfija(toPostfija(temp.getStandard()));
+            temp.setResultado(resultado(temp.getRawPostfija()));
             lista.insert(temp, posicion);
             actualizarTabla();
             table.setModel(model);
@@ -1023,16 +1021,30 @@ public class Calculadora extends javax.swing.JFrame {
     private void textoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoActionPerformed
         if (validar(texto.getText())) {
             Expresion temp = new Expresion(texto.getText());
-           //Aqui la convertis a postfija con un metodo y usas el metodo temp.setPostfija
-           temp.setPostfija(toPostfija(temp.getStandard()));
-//           temp.setResultado(resultado(temp.getRawPostfija()));
-            //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
+            //Aqui la convertis a postfija con un metodo y usas el metodo temp.setPostfija
+            temp.setPostfija(toPostfija(temp.getStandard()));
             
+            //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
+            temp.setResultado(resultado(temp.getRawPostfija()));
             lista.insert(temp, 0);
-            lista.print();
             texto.setText("");
         }
     }//GEN-LAST:event_textoActionPerformed
+
+    private void texto_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texto_modificarActionPerformed
+        if (validar(texto_modificar.getText())) {
+            int posicion = table.getSelectedRow();
+            Expresion temp=new Expresion(texto_modificar.getText());
+            lista.delete(posicion);
+            temp.setPostfija(toPostfija(temp.getStandard()));
+            temp.setResultado(resultado(temp.getRawPostfija()));
+            lista.insert(temp, posicion);
+            actualizarTabla();
+            table.setModel(model);
+            ventana_modificar.setVisible(false);
+            texto_modificar.setText("");
+        }
+    }//GEN-LAST:event_texto_modificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1135,14 +1147,12 @@ public class Calculadora extends javax.swing.JFrame {
         for (int i = 0; i < expresion.length(); i++) {
             if(expresion.charAt(i) == '+' || expresion.charAt(i) == '-' 
             || expresion.charAt(i) == '*' || expresion.charAt(i) == '/'){
-                System.out.println("AQUI DENTRO: " + expresion.substring(inicioNumero, i));
                 retPostfija[contadorPostfija++] = expresion.substring(inicioNumero, i);
                 inicioNumero = i+1;
                 if(operaciones.getSize()>0){
                     if((expresion.charAt(i) == '+' || expresion.charAt(i) == '-') 
                     &&(operaciones.peek().equals("*") || operaciones.peek().equals("/"))){
                         while(operaciones.peek() != null){
-                            System.out.println("Peek: " + operaciones.peek());
                             retPostfija[contadorPostfija++] = operaciones.pop();
                         }
                         operaciones.push(expresion.charAt(i)+"");
@@ -1156,11 +1166,9 @@ public class Calculadora extends javax.swing.JFrame {
                 
             }
             if(cantOperaciones==0 && inicioNumero > 0){
-                System.out.println("AQUI DENTRO: " + expresion.substring(inicioNumero));
                 retPostfija[contadorPostfija++] = expresion.substring(inicioNumero);
                 inicioNumero = -1;
                 while(operaciones.peek() != null){
-                    System.out.println("Peek: " + operaciones.peek());
                     retPostfija[contadorPostfija++] = operaciones.pop();
                 }
                 operaciones.push(expresion.charAt(i)+"");
@@ -1173,16 +1181,9 @@ public class Calculadora extends javax.swing.JFrame {
     int resultado(String[] postfija){
         Pila resultado = new Pila();
         for (int i = 0; i < postfija.length; i++) {
-            System.out.println("POSTFIJA[i]" + postfija[i]);
             if(Character.isDigit(postfija[i].charAt(0))){
-                //System.out.println("DIGIT");
-                //System.out.println("int i = " + i);
-                //System.out.println("postfija[i] = " + postfija[i]);
                 resultado.push(postfija[i]);
             }else{
-                //System.out.println("OPERACION");
-                //System.out.println("int i = " + i);
-                //System.out.println("postfija[i] = " + postfija[i]);
                 if(postfija[i].charAt(0) == '+'){
                     resultado.push((Integer.parseInt(resultado.pop()) + Integer.parseInt(resultado.pop())) + "");
                 }else if (postfija[i].charAt(0) == '-'){
