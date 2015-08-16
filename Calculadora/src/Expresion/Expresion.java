@@ -12,7 +12,7 @@ package Expresion;
 public class Expresion {
 
     private String standard;
-    private String postfija;
+    private String[] postfija;
     private int resultado;
 
     public Expresion() {
@@ -27,7 +27,7 @@ public class Expresion {
         this.resultado = 0;
     }
 
-    public Expresion(String standard, String postfija, int resultado) {
+    public Expresion(String standard, String postfija[], int resultado) {
         this.standard = standard;
         this.postfija = postfija;
         this.resultado = resultado;
@@ -42,10 +42,14 @@ public class Expresion {
     }
 
     public String getPostfija() {
-        return postfija;
+        String retStr="";
+        for(int i=0; i < postfija.length; i++){
+            retStr += postfija[i] + " ";
+        }
+        return retStr;
     }
 
-    public void setPostfija(String postfija) {
+    public void setPostfija(String postfija[]) {
         this.postfija = postfija;
     }
 

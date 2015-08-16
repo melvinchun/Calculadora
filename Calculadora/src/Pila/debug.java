@@ -12,6 +12,7 @@ package Pila;
 public class debug {
     public static void main(String[] args) {
         Pila pila= new Pila(new Nodo("8"));
+        System.out.println(pila.peek());
         System.out.println(pila.pop());
         System.out.println(pila.pop());
         pila.push("5");

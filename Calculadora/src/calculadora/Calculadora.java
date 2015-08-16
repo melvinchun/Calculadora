@@ -4,6 +4,8 @@ import Expresion.Expresion;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import listaenlazada.ListaEnlazada;
+import Cola.Cola;
+import Pila.Pila;
 
 /**
  *
@@ -884,6 +886,14 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void B_puntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_puntoActionPerformed
         //Creo que sera eliminado
+        String expresion = "3+2*5-4/2+3";
+        System.out.println("Probando postfija");
+        System.out.println("Probando con expresion: " + expresion);
+        System.out.print("Expresion postfija es: ");
+        String[] postfija = toPostfija(expresion);
+        for(int i = 0; i < postfija.length; i++){
+            System.out.print(postfija[i] + " ");
+        }
     }//GEN-LAST:event_B_puntoActionPerformed
 
     private void B_returnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_returnActionPerformed
@@ -1109,6 +1119,65 @@ public class Calculadora extends javax.swing.JFrame {
             }
         }
         return continuar;
+    }
+    
+    String[] toPostfija(String expresion){
+        int cantOperaciones = cantidadOperaciones(expresion);
+        String retPostfija[] = new String[cantOperaciones*2 +1];
+        Pila operaciones = new Pila();
+        int inicioNumero=0;
+        
+        String postfija = "";
+        
+        int contadorPostfija = 0;
+        for (int i = 0; i < expresion.length(); i++) {
+            if(expresion.charAt(i) == '+' || expresion.charAt(i) == '-' 
+            || expresion.charAt(i) == '*' || expresion.charAt(i) == '/'){
+                
+                
+                if(operaciones.getSize()>0){
+                    if((expresion.charAt(i) == '+' || expresion.charAt(i) == '-') 
+                    &&(operaciones.peek().equals("*") || operaciones.peek().equals("/"))){
+                        
+                        
+                        while(operaciones.peek() != null){
+                            retPostfija[contadorPostfija++] = operaciones.pop();
+                        }
+                        operaciones.push(expresion.charAt(i)+"");
+                    }else{
+                        operaciones.push(expresion.charAt(i)+"");
+                    }
+                }else{
+                    operaciones.push(expresion.charAt(i)+"");
+                }
+                retPostfija[contadorPostfija++] = expresion.substring(inicioNumero, i);
+                inicioNumero = i+1;
+                cantOperaciones--;
+                
+            }
+            
+            if(cantOperaciones==0 && inicioNumero > 0){
+                retPostfija[contadorPostfija++] = expresion.substring(inicioNumero);
+                inicioNumero = -1;
+                while(operaciones.peek() != null){
+                    retPostfija[contadorPostfija++] = operaciones.pop();
+                }
+                operaciones.push(expresion.charAt(i)+"");
+            }
+        }
+        
+        return retPostfija;
+    }
+    
+    int cantidadOperaciones(String expresion){
+        int cantOperaciones = 0;
+        for(int i = 0; i < expresion.length(); i++){
+            if(expresion.charAt(i) == '+' || expresion.charAt(i) == '-' 
+            || expresion.charAt(i) == '*' || expresion.charAt(i) == '/'){
+                cantOperaciones++;
+            }
+        }
+        return cantOperaciones;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_1;
