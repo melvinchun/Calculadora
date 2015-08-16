@@ -918,17 +918,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void B_listaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_listaActionPerformed
         //BOTON LISTA EN EL FRAME PRINCIPAL
-        model = new DefaultTableModel();
-        model.addColumn("Expresion");
-        model.addColumn("Postfija");
-        model.addColumn("Resultado");
-        String[] temp = new String[3];
-        for (int i = 0; i < lista.getSize(); i++) {
-            temp[0] = lista.get(i).getStandard();
-            temp[1] = lista.get(i).getPostfija();
-            temp[2] = "" + lista.get(i).getResultado();
-            model.addRow(temp);
-        }
+        actualizarTabla();
         table.setModel(model);
         ventana_lista.pack();
         ventana_lista.setModal(true);
@@ -961,9 +951,10 @@ public class Calculadora extends javax.swing.JFrame {
         //BOTON ENTER EN EL FRAME PRINCIPAL
         if (validar(texto.getText())) {
             Expresion temp = new Expresion(texto.getText());
-           //Aqui la convertis a postfija con un metodo y usas el metodo temp.setPostfija
+            //Aqui la convertis a postfija con un metodo y usas el metodo temp.setPostfija
 
             //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
+            
             lista.insert(temp, 0);
             lista.print();
             texto.setText("");
@@ -982,16 +973,7 @@ public class Calculadora extends javax.swing.JFrame {
             int posicion = table.getSelectedRow();
             if (JOptionPane.showConfirmDialog(ventana_lista, "¿Desea eliminar " + expresion + "?") == 0) {
                 lista.delete(posicion);
-                model = new DefaultTableModel();
-                model.addColumn("Nombre");
-                model.addColumn("Cantidad");
-                String[] temp = new String[3];
-                for (int i = 0; i < lista.getSize(); i++) {
-                    temp[0] = lista.get(i).getStandard();
-                    temp[1] = lista.get(i).getPostfija();
-                    temp[2] = "" + lista.get(i).getResultado();
-                    model.addRow(temp);
-                }
+                actualizarTabla();
                 System.out.println("\n" + lista.getSize());
                 lista.print();
                 table.setModel(model);
@@ -1006,17 +988,7 @@ public class Calculadora extends javax.swing.JFrame {
             int posicion = table.getSelectedRow();
             lista.delete(posicion);
             lista.insert(new Expresion(texto_modificar.getText()), posicion);
-            model = new DefaultTableModel();
-            model.addColumn("Expresion");
-            model.addColumn("Postfija");
-            model.addColumn("Resultado");
-            String[] temp = new String[3];
-            for (int i = 0; i < lista.getSize(); i++) {
-                temp[0] = lista.get(i).getStandard();
-                temp[1] = lista.get(i).getPostfija();
-                temp[2] = "" + lista.get(i).getResultado();
-                model.addRow(temp);
-            }
+            actualizarTabla();
             table.setModel(model);
             ventana_modificar.setVisible(false);
             texto_modificar.setText("");
@@ -1043,6 +1015,7 @@ public class Calculadora extends javax.swing.JFrame {
            //Aqui la convertis a postfija con un metodo y usas el metodo temp.setPostfija
 
             //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
+            
             lista.insert(temp, 0);
             lista.print();
             texto.setText("");
@@ -1082,6 +1055,21 @@ public class Calculadora extends javax.swing.JFrame {
                 new Calculadora().setVisible(true);
             }
         });
+    }
+
+    void actualizarTabla(){
+        model = new DefaultTableModel();
+            model.addColumn("Expresion");
+            model.addColumn("Postfija");
+            model.addColumn("Resultado");
+            String[] temp = new String[3];
+            for (int i = 0; i < lista.getSize(); i++) {
+                temp[0] = lista.get(i).getStandard();
+                temp[1] = lista.get(i).getPostfija();
+                temp[2] = "" + lista.get(i).getResultado();
+                model.addRow(temp);
+            }
+            table.setModel(model);
     }
 
     /*Hice metodo el metodo validar con lo que habias subido para que sea mas facil
