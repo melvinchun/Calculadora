@@ -963,6 +963,7 @@ public class Calculadora extends javax.swing.JFrame {
             Expresion temp = new Expresion(texto.getText());
             //Aqui la convertis a postfija con un metodo y usas el metodo temp.setPostfija
             temp.setPostfija(toPostfija(temp.getStandard()));
+            temp.setResultado(resultado(temp.getRawPostfija()));
             //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
             
             lista.insert(temp, 0);
@@ -984,8 +985,6 @@ public class Calculadora extends javax.swing.JFrame {
             if (JOptionPane.showConfirmDialog(ventana_lista, "¿Desea eliminar " + expresion + "?") == 0) {
                 lista.delete(posicion);
                 actualizarTabla();
-                System.out.println("\n" + lista.getSize());
-                lista.print();
                 table.setModel(model);
             }
         } catch (Exception e) {
@@ -1026,7 +1025,7 @@ public class Calculadora extends javax.swing.JFrame {
             Expresion temp = new Expresion(texto.getText());
            //Aqui la convertis a postfija con un metodo y usas el metodo temp.setPostfija
            temp.setPostfija(toPostfija(temp.getStandard()));
-
+//           temp.setResultado(resultado(temp.getRawPostfija()));
             //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
             
             lista.insert(temp, 0);
@@ -1136,14 +1135,14 @@ public class Calculadora extends javax.swing.JFrame {
         for (int i = 0; i < expresion.length(); i++) {
             if(expresion.charAt(i) == '+' || expresion.charAt(i) == '-' 
             || expresion.charAt(i) == '*' || expresion.charAt(i) == '/'){
-                
-                
+                System.out.println("AQUI DENTRO: " + expresion.substring(inicioNumero, i));
+                retPostfija[contadorPostfija++] = expresion.substring(inicioNumero, i);
+                inicioNumero = i+1;
                 if(operaciones.getSize()>0){
                     if((expresion.charAt(i) == '+' || expresion.charAt(i) == '-') 
                     &&(operaciones.peek().equals("*") || operaciones.peek().equals("/"))){
-                        
-                        
                         while(operaciones.peek() != null){
+                            System.out.println("Peek: " + operaciones.peek());
                             retPostfija[contadorPostfija++] = operaciones.pop();
                         }
                         operaciones.push(expresion.charAt(i)+"");
@@ -1153,16 +1152,15 @@ public class Calculadora extends javax.swing.JFrame {
                 }else{
                     operaciones.push(expresion.charAt(i)+"");
                 }
-                retPostfija[contadorPostfija++] = expresion.substring(inicioNumero, i);
-                inicioNumero = i+1;
                 cantOperaciones--;
                 
             }
-            
             if(cantOperaciones==0 && inicioNumero > 0){
+                System.out.println("AQUI DENTRO: " + expresion.substring(inicioNumero));
                 retPostfija[contadorPostfija++] = expresion.substring(inicioNumero);
                 inicioNumero = -1;
                 while(operaciones.peek() != null){
+                    System.out.println("Peek: " + operaciones.peek());
                     retPostfija[contadorPostfija++] = operaciones.pop();
                 }
                 operaciones.push(expresion.charAt(i)+"");
@@ -1170,6 +1168,33 @@ public class Calculadora extends javax.swing.JFrame {
         }
         
         return retPostfija;
+    }
+    
+    int resultado(String[] postfija){
+        Pila resultado = new Pila();
+        for (int i = 0; i < postfija.length; i++) {
+            System.out.println("POSTFIJA[i]" + postfija[i]);
+            if(Character.isDigit(postfija[i].charAt(0))){
+                //System.out.println("DIGIT");
+                //System.out.println("int i = " + i);
+                //System.out.println("postfija[i] = " + postfija[i]);
+                resultado.push(postfija[i]);
+            }else{
+                //System.out.println("OPERACION");
+                //System.out.println("int i = " + i);
+                //System.out.println("postfija[i] = " + postfija[i]);
+                if(postfija[i].charAt(0) == '+'){
+                    resultado.push((Integer.parseInt(resultado.pop()) + Integer.parseInt(resultado.pop())) + "");
+                }else if (postfija[i].charAt(0) == '-'){
+                    resultado.push((Integer.parseInt(resultado.pop()) - Integer.parseInt(resultado.pop())) + "");
+                }else if (postfija[i].charAt(0) == '*'){
+                    resultado.push((Integer.parseInt(resultado.pop()) * Integer.parseInt(resultado.pop())) + "");
+                }else if (postfija[i].charAt(0) == '/'){
+                    resultado.push((Integer.parseInt(resultado.pop()) / Integer.parseInt(resultado.pop())) + "");
+                }
+            }
+        }
+        return Integer.parseInt(resultado.pop());
     }
     
     int cantidadOperaciones(String expresion){

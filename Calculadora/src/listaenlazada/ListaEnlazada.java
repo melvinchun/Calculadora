@@ -42,27 +42,35 @@ public class ListaEnlazada {
     }
 
     public void print() {
-        Nodo next = cabeza;
-        do {
-            System.out.print(next.getValue().getStandard() + "\t");
-            next = next.next();
-        } while (next != null);
+        if(cabeza !=null){
+            Nodo siguiente = cabeza;
+            while (siguiente.next() != null) {
+                System.out.println(siguiente.getValue().getStandard() + ", ");
+                siguiente = siguiente.next();
+            }
+            System.out.println(siguiente.getValue().getStandard());
+        }else{
+            System.out.println("VACIO!");
+        }
     }
 
     public void delete(int pos) {
-        if (pos == 0) {
+        if(getSize() == 1){
+            cabeza = null;
+        }else if (pos == 0 ) {
             cabeza = cabeza.next();
         } else if (pos == 1) {
             //Nodo newNodo = new Nodo(value, cabeza.next());
             cabeza.setNext(cabeza.next().next());
-        }
-        Nodo siguiente = cabeza;
-        int lugar = 0;
-        while (siguiente.next() != null) {
-            lugar++;
-            siguiente = siguiente.next();
-            if (lugar == pos - 1) {
-                siguiente.setNext(siguiente.next().next());
+        }else{
+            Nodo siguiente = cabeza;
+            int lugar = 0;
+            while (siguiente.next() != null) {
+                lugar++;
+                siguiente = siguiente.next();
+                if (lugar == pos - 1) {
+                    siguiente.setNext(siguiente.next().next());
+                }
             }
         }
     }

@@ -48,6 +48,9 @@ public class Expresion {
         }
         return retStr;
     }
+    public String[] getRawPostfija() {
+        return postfija;
+    }
 
     public void setPostfija(String postfija[]) {
         this.postfija = postfija;
