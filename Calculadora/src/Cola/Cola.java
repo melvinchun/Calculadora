@@ -17,43 +17,42 @@ public class Cola {
         if (cola == null) {
             cola = new Nodo(value);
         } else {
-            Nodo temp = cola;
-            Nodo temp2 = cola.getPrevious();
-            do {
-                if (temp2 == null) {
-                    temp.setPrevious(new Nodo(value));
-                    break;
-                } else {
-                    temp = temp2;
-                    temp2 = temp.getPrevious();
-                }
-            } while (temp != null);
+            Nodo next = cola;
+            while(next.next() != null){
+                next = next.next();
+            }
+            next.setNext(new Nodo(value));
         }
     }
 
     public String unqueue() {
         String retorno = "No hay valores";
-        if (cola == null) {
-            //Alguna validacion
-        } else {
-            retorno = cola.getValue();
-            Nodo temp = cola.getPrevious();
-            cola = temp;
+        if(cola != null){
+           retorno = cola.getValue();
+           cola = cola.next();
         }
         return retorno;
     }
 
     public String peek() {
-        return cola.getValue();
+        String retorno = "No hay valores";
+        if(cola != null){
+            retorno = cola.getValue();
+        }
+        return retorno;
     }
 
     public void print() {
-        Nodo previous = cola;
-        String retorno = "";
-        do {
-            retorno = previous.getValue() + " " + retorno;
-            previous = previous.getPrevious();
-        } while (previous != null);
+        Nodo next = cola;
+        String retorno = "VACIO!";
+        if(next != null){
+            retorno = "";
+            while(next.next() != null){
+                retorno += next.getValue() + ", ";
+                next = next.next();
+            }
+            retorno += next.getValue();
+        }
         System.out.println(retorno);
     }
 }

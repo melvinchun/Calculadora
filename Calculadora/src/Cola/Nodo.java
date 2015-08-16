@@ -11,18 +11,18 @@ package Cola;
  */
 class Nodo {
     private String value;
-    private Nodo previous;
+    private Nodo next;
 
     public Nodo(Nodo nodo){
-       previous = nodo.previous;
+       next = nodo.next;
     }
     public Nodo(String value, Nodo next) {
         this.value = value;
-        this.previous = next;
+        this.next = next;
     }
     public Nodo(String value) {
         this.value = value;
-        previous = null;
+        next = null;
     }
 
     public String getValue() {
@@ -33,11 +33,11 @@ class Nodo {
         this.value = value;
     }
 
-    public Nodo getPrevious() {
-        return previous;
+    public Nodo next() {
+        return next;
     }
 
-    public void setPrevious(Nodo next) {
-        this.previous = next;
+    public void setNext(Nodo next) {
+        this.next = next;
     }
 }

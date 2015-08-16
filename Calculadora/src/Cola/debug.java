@@ -14,10 +14,10 @@ public class debug {
         Cola cola = new Cola();
         cola.queue("1");
         cola.queue("2");
-        cola.queue("3");
-        cola.queue("4");
-        cola.queue("5");
-        cola.queue("6");
+        cola.queue("yo");
+        cola.queue("soy");
+        cola.queue("cr4ck");
+        cola.queue("programando xD");
         cola.print();
         cola.unqueue();
         cola.unqueue();
