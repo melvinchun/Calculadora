@@ -949,6 +949,8 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void B_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_modificarActionPerformed
         //BOTON MODIFICAR DE MENU POP 
+        int posicion = table.getSelectedRow();
+        texto_modificar.setText(lista.get(posicion).getStandard());
         ventana_modificar.pack();
         ventana_modificar.setModal(true);
         ventana_modificar.setLocationRelativeTo(ventana_lista);
@@ -961,9 +963,7 @@ public class Calculadora extends javax.swing.JFrame {
             Expresion temp = new Expresion(texto.getText());
            //Aqui la convertis a postfija con un metodo y usas el metodo temp.setPostfija
 
-           //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
-            
-            
+            //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
             lista.insert(temp, 0);
             lista.print();
             texto.setText("");
@@ -1003,6 +1003,21 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void B_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_aceptarActionPerformed
         if (validar(texto_modificar.getText())) {
+            int posicion = table.getSelectedRow();
+            lista.delete(posicion);
+            lista.insert(new Expresion(texto_modificar.getText()), posicion);
+            model = new DefaultTableModel();
+            model.addColumn("Expresion");
+            model.addColumn("Postfija");
+            model.addColumn("Resultado");
+            String[] temp = new String[3];
+            for (int i = 0; i < lista.getSize(); i++) {
+                temp[0] = lista.get(i).getStandard();
+                temp[1] = lista.get(i).getPostfija();
+                temp[2] = "" + lista.get(i).getResultado();
+                model.addRow(temp);
+            }
+            table.setModel(model);
             ventana_modificar.setVisible(false);
             texto_modificar.setText("");
         }
@@ -1027,8 +1042,7 @@ public class Calculadora extends javax.swing.JFrame {
             Expresion temp = new Expresion(texto.getText());
            //Aqui la convertis a postfija con un metodo y usas el metodo temp.setPostfija
 
-           //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
-            
+            //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
             lista.insert(temp, 0);
             lista.print();
             texto.setText("");
