@@ -1165,7 +1165,7 @@ public class Calculadora extends javax.swing.JFrame {
                 cantOperaciones--;
                 
             }
-            if(cantOperaciones==0 && inicioNumero > 0){
+            if(cantOperaciones==0 && inicioNumero >= 0){
                 retPostfija[contadorPostfija++] = expresion.substring(inicioNumero);
                 inicioNumero = -1;
                 while(operaciones.peek() != null){
