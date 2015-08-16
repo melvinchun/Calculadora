@@ -996,8 +996,10 @@ public class Calculadora extends javax.swing.JFrame {
     private void B_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_aceptarActionPerformed
         if (validar(texto_modificar.getText())) {
             int posicion = table.getSelectedRow();
+            Expresion temp=new Expresion(texto_modificar.getText());
             lista.delete(posicion);
-            lista.insert(new Expresion(texto_modificar.getText()), posicion);
+            temp.setPostfija(toPostfija(temp.getStandard()));
+            lista.insert(temp, posicion);
             actualizarTabla();
             table.setModel(model);
             ventana_modificar.setVisible(false);
