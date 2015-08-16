@@ -962,7 +962,7 @@ public class Calculadora extends javax.swing.JFrame {
         if (validar(texto.getText())) {
             Expresion temp = new Expresion(texto.getText());
             //Aqui la convertis a postfija con un metodo y usas el metodo temp.setPostfija
-
+            temp.setPostfija(toPostfija(temp.getStandard()));
             //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
             
             lista.insert(temp, 0);
@@ -1024,6 +1024,7 @@ public class Calculadora extends javax.swing.JFrame {
             Expresion temp = new Expresion(texto.getText());
            //Aqui la convertis a postfija con un metodo y usas el metodo temp.setPostfija
            temp.setPostfija(toPostfija(temp.getStandard()));
+
             //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
             
             lista.insert(temp, 0);
@@ -1068,7 +1069,6 @@ public class Calculadora extends javax.swing.JFrame {
     }
 
     void actualizarTabla(){
-        try{
           model = new DefaultTableModel();
             model.addColumn("Expresion");
             model.addColumn("Postfija");
@@ -1081,10 +1081,6 @@ public class Calculadora extends javax.swing.JFrame {
                 model.addRow(temp);
             }
             table.setModel(model);  
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        
     }
 
     /*Hice metodo el metodo validar con lo que habias subido para que sea mas facil
