@@ -12,72 +12,91 @@ import Expresion.Expresion;
  * @author guitartsword
  */
 public class ListaEnlazada {
+
     private Nodo cabeza;
-    private int size = 0;
+
     public ListaEnlazada() {
         cabeza = null;
     }
-    public void insert(Expresion value, int pos){
-        if(pos == 0 && cabeza == null){
-            cabeza = new Nodo(value);
-        }else if(pos == 0){
-            Nodo newCabeza = new Nodo(value, new Nodo(cabeza));
-            cabeza = newCabeza;
-        }else if(pos == 1){
-            Nodo newNodo = new Nodo(value, cabeza.next());
-            cabeza.setNext(newNodo);
-        }
-        Nodo next = cabeza;
-        int lugar = 0;
-        while(next.next() != null){
-            lugar++;
-            next = next.next();
-            if(lugar == pos-1){
-                Nodo newNodo = new Nodo(value, next.next());
-                next.setNext(newNodo);
+
+    public void insert(Expresion value, int pos) {
+        int cont = 0;
+        Nodo temp = cabeza;
+        boolean agrego = true;
+        do {
+            if (pos == 0 && cont == 0 && temp == null) {
+                cabeza = new Nodo(value);
+                agrego = false;
+                temp = cabeza;
+            } else if (pos == 0 && cont == 0) {
+                cabeza = new Nodo(value, temp);
+                agrego = false;
+            } else if ((cont + 1) == pos) {
+                Nodo temp2 = temp.next();
+                temp.setNext(new Nodo(value, temp2));
+                agrego = false;
             }
-        }
-        /*
-            next = new Nodo(next.next());
-            System.out.println(next.getValue() + ", ");
-        */
+            cont++;
+            temp = temp.next();
+        } while (temp != null && agrego);
     }
-    public void print(){
-        System.out.println(cabeza.getValue() +", ");
+
+    public void print() {
         Nodo next = cabeza;
-        while(next.next() != null){
+        do {
+            System.out.print(next.getValue().getStandard() + "\t");
             next = next.next();
-            System.out.println(next.getValue() + ", ");
-        }
+        } while (next != null);
     }
-    public void delete(int pos){
-        if(pos == 0){
+
+    public void delete(int pos) {
+        if (pos == 0) {
             cabeza = cabeza.next();
-        }else if(pos == 1){
+        } else if (pos == 1) {
             //Nodo newNodo = new Nodo(value, cabeza.next());
             cabeza.setNext(cabeza.next().next());
         }
         Nodo siguiente = cabeza;
         int lugar = 0;
-        while(siguiente.next() != null){
+        while (siguiente.next() != null) {
             lugar++;
             siguiente = siguiente.next();
-            if(lugar == pos-1){
+            if (lugar == pos - 1) {
                 siguiente.setNext(siguiente.next().next());
             }
         }
     }
-    public int getSize(){
-        return size;
-    }
-    @Override
-    public String toString(){
-        String retVal = cabeza.getValue() + ", ";
-        Nodo next = cabeza;
-        while(next.next() != null){
-            next = next.next();
-            retVal += (next.getValue() + ", ");
+
+    public Expresion get(int pos) {
+        int cont = 0;
+        Nodo temp = cabeza;
+        Nodo retorno = null;
+        boolean encontro = true;
+        do {
+            if (pos == cont) {
+                retorno = temp;
+                encontro = false;
+            }
+            cont++;
+            temp = temp.next();
+        } while (temp != null && encontro);
+        if (encontro) {
+            return null;
+        } else {
+            return retorno.getValue();
         }
-        return retVal;
+    }
+
+    public int getSize() {
+        int cont = 0;
+        Nodo temp = cabeza;
+        do {
+            cont++;
+            if (cabeza == null) {
+                cont = 0;
+            }
+            temp = temp.next();
+        } while (temp != null);
+        return cont;
     }
 }

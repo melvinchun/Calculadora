@@ -1,7 +1,9 @@
 package calculadora;
 
+import Expresion.Expresion;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import listaenlazada.ListaEnlazada;
 
 /**
  *
@@ -12,14 +14,7 @@ public class Calculadora extends javax.swing.JFrame {
     public Calculadora() {
         initComponents();
         this.setLocationRelativeTo(null);
-        model = new DefaultTableModel();
-        model.addColumn("Expresion");
-        model.addColumn("Resultado");
-        String array[] = new String[2];
-        array[0] = "Hola";
-        array[1] = "5";
-        model.addRow(array);
-        table.setModel(model);
+        lista = new ListaEnlazada();
     }
 
     @SuppressWarnings("unchecked")
@@ -246,6 +241,11 @@ public class Calculadora extends javax.swing.JFrame {
         texto.setForeground(new java.awt.Color(255, 255, 255));
         texto.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         texto.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        texto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoActionPerformed(evt);
+            }
+        });
         texto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 textoKeyPressed(evt);
@@ -906,7 +906,7 @@ public class Calculadora extends javax.swing.JFrame {
         char temp = evt.getKeyChar();
         if (!Character.isDigit(temp) && (temp != '*' && temp != '+' && temp != '-' && temp != '/' && temp != 65535 && temp != 8 && temp != 10)) {
             String temp2 = "";
-            JOptionPane.showMessageDialog(this, "Formato invalido","Error",2);
+            JOptionPane.showMessageDialog(this, "Formato invalido", "Error", 2);
             for (int i = 0; i < texto.getText().length(); i++) {
                 if (texto.getText().charAt(i) != temp) {
                     temp2 += texto.getText().charAt(i);
@@ -918,6 +918,18 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void B_listaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_listaActionPerformed
         //BOTON LISTA EN EL FRAME PRINCIPAL
+        model = new DefaultTableModel();
+        model.addColumn("Expresion");
+        model.addColumn("Postfija");
+        model.addColumn("Resultado");
+        String[] temp = new String[3];
+        for (int i = 0; i < lista.getSize(); i++) {
+            temp[0] = lista.get(i).getStandard();
+            temp[1] = lista.get(i).getPostfija();
+            temp[2] = "" + lista.get(i).getResultado();
+            model.addRow(temp);
+        }
+        table.setModel(model);
         ventana_lista.pack();
         ventana_lista.setModal(true);
         ventana_lista.setLocationRelativeTo(this);
@@ -945,9 +957,17 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void B_enterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_enterActionPerformed
         //BOTON ENTER EN EL FRAME PRINCIPAL
+        if (validar(texto.getText())) {
+            Expresion temp = new Expresion(texto.getText());
+           //Aqui la convertis a postfija con un metodo y usas el metodo temp.setPostfija
 
-        //Metodo validar
-        validar(texto.getText());
+           //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
+            
+            
+            lista.insert(temp, 0);
+            lista.print();
+            texto.setText("");
+        }
     }//GEN-LAST:event_B_enterActionPerformed
 
     private void B_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_salirActionPerformed
@@ -959,16 +979,25 @@ public class Calculadora extends javax.swing.JFrame {
         //BOTON ELIMIAR DE MENU POP 
         try {
             String expresion = (String) table.getValueAt(table.getSelectedRow(), 0);
+            int posicion = table.getSelectedRow();
             if (JOptionPane.showConfirmDialog(ventana_lista, "¿Desea eliminar " + expresion + "?") == 0) {
-                //falta eliminar la expresion de la lista
+                lista.delete(posicion);
                 model = new DefaultTableModel();
                 model.addColumn("Nombre");
                 model.addColumn("Cantidad");
-                //Falta modificar el modelo
+                String[] temp = new String[3];
+                for (int i = 0; i < lista.getSize(); i++) {
+                    temp[0] = lista.get(i).getStandard();
+                    temp[1] = lista.get(i).getPostfija();
+                    temp[2] = "" + lista.get(i).getResultado();
+                    model.addRow(temp);
+                }
+                System.out.println("\n" + lista.getSize());
+                lista.print();
                 table.setModel(model);
             }
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }//GEN-LAST:event_B_eliminarActionPerformed
 
@@ -983,7 +1012,7 @@ public class Calculadora extends javax.swing.JFrame {
         char temp = evt.getKeyChar();
         if (!Character.isDigit(temp) && (temp != '*' && temp != '+' && temp != '-' && temp != '/' && temp != 65535 && temp != 8 && temp != 10)) {
             String temp2 = "";
-            JOptionPane.showMessageDialog(ventana_lista, "Formato invalido", "Error",2);
+            JOptionPane.showMessageDialog(ventana_lista, "Formato invalido", "Error", 2);
             for (int i = 0; i < texto_modificar.getText().length(); i++) {
                 if (texto_modificar.getText().charAt(i) != temp) {
                     temp2 += texto_modificar.getText().charAt(i);
@@ -992,6 +1021,19 @@ public class Calculadora extends javax.swing.JFrame {
             texto_modificar.setText(temp2);
         }
     }//GEN-LAST:event_texto_modificarKeyPressed
+
+    private void textoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoActionPerformed
+        if (validar(texto.getText())) {
+            Expresion temp = new Expresion(texto.getText());
+           //Aqui la convertis a postfija con un metodo y usas el metodo temp.setPostfija
+
+           //Aqui calculas el resultado con un metodo y usas el metodo temp.setResultado
+            
+            lista.insert(temp, 0);
+            lista.print();
+            texto.setText("");
+        }
+    }//GEN-LAST:event_textoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1038,6 +1080,7 @@ public class Calculadora extends javax.swing.JFrame {
         }
         for (int i = 0; i < temp.length(); i++) {
             if (i == temp.length() - 1 && (temp.charAt(i) == '+' || temp.charAt(i) == '-' || temp.charAt(i) == '*' || temp.charAt(i) == '/')) {
+                continuar = false;
                 JOptionPane.showMessageDialog(null, "Tiene un error de syntaxis, revise el ultimo signo", "Calculadora Simple", 2);
                 break;
             } else {
@@ -1104,4 +1147,5 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JDialog ventana_modificar;
     // End of variables declaration//GEN-END:variables
     private DefaultTableModel model;
+    private ListaEnlazada lista;
 }
