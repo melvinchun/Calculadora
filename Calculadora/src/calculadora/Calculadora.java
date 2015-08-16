@@ -1187,7 +1187,7 @@ public class Calculadora extends javax.swing.JFrame {
                 if(postfija[i].charAt(0) == '+'){
                     resultado.push((Integer.parseInt(resultado.pop()) + Integer.parseInt(resultado.pop())) + "");
                 }else if (postfija[i].charAt(0) == '-'){
-                    resultado.push((Integer.parseInt(resultado.pop()) - Integer.parseInt(resultado.pop())) + "");
+                    resultado.push((-Integer.parseInt(resultado.pop()) + Integer.parseInt(resultado.pop())) + "");
                 }else if (postfija[i].charAt(0) == '*'){
                     resultado.push((Integer.parseInt(resultado.pop()) * Integer.parseInt(resultado.pop())) + "");
                 }else if (postfija[i].charAt(0) == '/'){
