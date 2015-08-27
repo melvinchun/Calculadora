@@ -6,6 +6,7 @@ import javax.swing.table.DefaultTableModel;
 import listaenlazada.ListaEnlazada;
 import Cola.Cola;
 import Pila.Pila;
+import java.awt.Color;
 
 /**
  *
@@ -132,8 +133,6 @@ public class Calculadora extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        click_menu.setSelected(null);
-
         B_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
         B_modificar.setText("Modificar");
         B_modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -248,6 +247,14 @@ public class Calculadora extends javax.swing.JFrame {
         texto.setForeground(new java.awt.Color(255, 255, 255));
         texto.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         texto.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        texto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                textoMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                textoMouseEntered(evt);
+            }
+        });
         texto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoActionPerformed(evt);
@@ -1045,6 +1052,14 @@ public class Calculadora extends javax.swing.JFrame {
             texto_modificar.setText("");
         }
     }//GEN-LAST:event_texto_modificarActionPerformed
+
+    private void textoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoMouseEntered
+        texto.setForeground(Color.green);
+    }//GEN-LAST:event_textoMouseEntered
+
+    private void textoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoMouseExited
+        texto.setForeground(Color.white);
+    }//GEN-LAST:event_textoMouseExited
 
     /**
      * @param args the command line arguments
